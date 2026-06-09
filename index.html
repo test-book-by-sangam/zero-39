@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BCA Premium Live Test</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Arial, sans-serif; 
+            background-color: #eef2f5; 
+            color: #333;
+            padding: 20px; 
+            margin: 0;
+        }
+        .container { 
+            background: white; 
+            max-width: 900px; 
+            margin: 0 auto; 
+            padding: 30px; 
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1); 
+            border-top: 8px solid #1a5276; 
+            border-radius: 8px;
+        }
+        .header { text-align: center; border-bottom: 2px solid #1a5276; padding-bottom: 15px; margin-bottom: 25px; }
+        .header h1 { margin: 0; color: #1a5276; font-size: 26px; }
+        .header h2 { margin: 5px 0 0; color: #555; font-size: 16px; }
+        .instructions { background: #fef9e7; padding: 15px; border-left: 5px solid #f39c12; font-size: 14px; margin-bottom: 25px; border-radius: 4px; }
+        .section-title { background: #1a5276; color: white; padding: 10px 15px; font-size: 16px; font-weight: bold; margin: 30px 0 15px 0; border-radius: 4px; }
+        .question-block { margin-bottom: 20px; padding: 15px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; }
+        .question-text { font-weight: 600; color: #1e293b; margin-bottom: 12px; font-size: 15px; }
+        .options { display: flex; flex-direction: column; gap: 8px; }
+        .option-label { display: flex; align-items: center; padding: 8px 12px; background: white; border: 1px solid #cbd5e1; border-radius: 4px; cursor: pointer; transition: 0.2s; font-size: 14px; }
+        .option-label:hover { background: #f1f5f9; }
+        .option-label input { margin-right: 10px; cursor: pointer; }
+        
+        /* Result Highlights */
+        .correct-answer { background-color: #d4edda !important; border-color: #28a745 !important; color: #155724 !important; font-weight: bold; }
+        .wrong-answer { background-color: #f8d7da !important; border-color: #dc3545 !important; color: #721c24 !important; text-decoration: line-through; }
+        
+        .submit-btn { display: block; width: 100%; padding: 15px; background: #1a5276; color: white; border: none; font-size: 18px; font-weight: bold; border-radius: 6px; cursor: pointer; margin-top: 30px; transition: 0.3s; }
+        .submit-btn:hover { background: #154360; }
+        
+        #result-box { display: none; background: #d4edda; color: #155724; border: 2px solid #28a745; padding: 20px; margin-top: 30px; text-align: center; border-radius: 8px; font-size: 22px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>12th - LIVE EXAM PORTAL</h1>
+        <h3>पुत्र वियोग Online Test (50 Questions)</h3>
+<h2 style="font-size:10px; color:#888; font-weight:normal;">
+    यह test sangam (in id-@sangam__zero) द्वारा बनाया गया है। यदि आप भी अपने लिए इसी प्रकार का online test बनवाना चाहते हैं, तो 9241967602 पर Message कर सकते हैं।</h2>
+    </div>
+
+    <div class="instructions">
+        <strong>निर्देश:</strong> सभी प्रश्नों के उत्तर दें। प्रत्येक प्रश्न के 4 विकल्प हैं। परीक्षण पूरा करने के बाद <strong>"Submit Test"</strong> पर क्लिक करें ताकि आप अपना स्कोर और सही उत्तर देख सकें।
+    </div>
+
+    <form id="quizForm">
+        
+        <!-- SECTION 01 -->
+        <div class="section-title">SECTION 01. </div>
+        
+        <script>
+            // All 50 Questions Data (Generated Dynamically for clean code)
+           const questions = [
+                // SECTION - पुत्र वियोग (सुभद्रा कुमारी चौहान) - Hindi 12th Objective Questions
+                { q: "1. 'पुत्र वियोग' शीर्षक कविता किसकी रचना है ?", opt: ["जयशंकर प्रसाद", "सुभद्रा कुमारी चौहान", "रघुवीर सहाय", "शमशेर बहादुर सिंह"], ans: 1 },
+                { q: "2. सुभद्रा कुमारी चौहान का जन्म कहाँ हुआ था ?", opt: ["वाराणसी", "कानपुर", "इलाहाबाद", "फैजाबाद"], ans: 2 },
+                { q: "3. सुभद्रा कुमारी चौहान को किस पार्टी का एम०एल०ए० चुना गया था ?", opt: ["समाजवादी पार्टी", "भारतीय कम्यूनिस्ट पार्टी", "भारतीय जनता पार्टी", "काँग्रेस"], ans: 3 },
+                { q: "4. सुभद्रा कुमारी चौहान किस वर्ग की कवयित्री मानी जाती है ?", opt: ["कटु यथार्थभाव धारा", "राष्ट्रीय भाव धारा", "भक्ति भाव धारा", "इनमें से कोई नहीं"], ans: 1 },
+                { q: "5. सुभद्रा कुमारी चौहान की कौन-सी कृति नहीं है ?", opt: ["बिखरे मोती", "मुकुल", "प्रायश्चित", "त्रिधारा"], ans: 2 },
+                { q: "6. सुभद्रा कुमारी चौहान की कौन-सी कृति है ?", opt: ["इरावती", "पद्मावती", "काठ का सपना", "सभा के खेल"], ans: 3 },
+                { q: "7. 'सुभद्रा जी के साहित्य में अपने युग के मूल उद्देश्य, उसके भिन्न-भिन्न रूप, अपनी आमरणहीन प्रकृत शैली में प्रकट हुए हैं।' यह किसका कथन है ?", opt: ["मुक्तिबोध", "अशोक वाजपेयी", "रघुवीर सहाय", "जयशंकर प्रसाद"], ans: 0 },
+                { q: "8. सुभद्रा कुमारी चौहान के अनुसार, माँ के लिए अपने मन को समझाना कब कठिन हो जाता है ?", opt: ["भाई की मृत्यु होने पर", "पिता की मृत्यु होने पर", "पुत्र की मृत्यु होने पर", "पति की मृत्यु होने पर"], ans: 2 },
+                { q: "9. 'पुत्र वियोग' शीर्षक कविता में कवयित्री का खिलौना क्या है ?", opt: ["उनका पुत्र", "उनका तोता", "उनका छोटा भाई", "इनमें से कोई नहीं"], ans: 0 },
+                { q: "10. सुभद्रा कुमारी चौहान अपनी पढ़ाई छोड़कर किस आन्दोलन में सक्रिय भूमिका निभाने लगी ?", opt: ["सविनय अवज्ञा आन्दोलन", "असहयोग आन्दोलन", "भारत छोड़ो आन्दोलन", "दिल्ली चलो आन्दोलन"], ans: 1 },
+                { q: "11. 'पुत्र वियोग' कविता में कवयित्री ने अपने असामयिक मृत पुत्र के लिए किस शब्द का प्रयोग नहीं किया है ?", opt: ["खिलौना", "छौना", "खोया धन", "अनमोल रतन"], ans: 3 },
+                { q: "12. सुभद्रा कुमारी चौहान का जीवन सूना-सूना क्यों हो रहा है ?", opt: ["पति के दूर जाने के कारण", "जेल जाने के कारण", "पुत्र के असमय निधन के कारण", "इनमें से कोई नहीं"], ans: 2 },
+                { q: "13. सुभद्रा कुमारी चौहान स्वयं को असहाय क्यों कहती है ?", opt: ["पिता-वियोग के कारण", "पुत्र-वियोग के कारण", "पति-वियोग के कारण", "इनमें से कोई नहीं"], ans: 1 },
+                { q: "14. 'पुत्र वियोग' कविता में कवयित्री किसके लिए पत्थर को देवता मानकर पूजा करती है ?", opt: ["अपने लिए", "पति के लिए", "भाई के लिए", "पुत्र के लिए"], ans: 3 },
+                { q: "15. 'गुलामी का नशा' किसकी रचना है ?", opt: ["सुभद्रा कुमारी चौहान की", "ठाकुर रामनाथ सिंह की", "ठाकुर लक्ष्मण सिंह की", "इनमें किसी की नहीं"], ans: 1 },
+                { q: "16. सुभद्रा कुमारी चौहान के पति का नाम क्या था ?", opt: ["ठाकुर लक्ष्मण सिंह", "ठाकुर दीनदयालु सिंह", "ठाकुर रामेश्वर सिंह", "ठाकुर रामप्रीत सिंह"], ans: 3 },
+                { q: "17. 'बिखरे मोती' क्या है ?", opt: ["उपन्यास", "काव्य संकलन", "निबंध संकलन", "कहानी संग्रह"], ans: 3 },
+                { q: "18. 'सरोज स्मृति' किसकी रचना है ?", opt: ["पंत", "निराला", "महादेवी वर्मा", "सुभद्रा कुमारी चौहान"], ans: 1 },
+                { q: "19. नास्थवेट गर्ल्स स्कूल में सुभद्रा कुमारी चौहान की प्रिय मित्र कौन थी ?", opt: ["महादेवी वर्मा", "मन्नू भंडारी", "ममता कालिया", "इनमें से कोई नहीं"], ans: 0 },
+                { q: "20. सुभद्रा कुमारी चौहान का प्रतिनिधि कविता संग्रह कौन-सा है ?", opt: ["त्रिधारा", "मुकुल", "अनामिका", "गीतिका"], ans: 1 },
+                { q: "21. सुभद्रा कुमारी चौहान का जन्म कब हुआ ?", opt: ["16 अगस्त, 1904 को", "20 जुलाई, 1920 को", "18 मई, 1930 को", "12 अगस्त, 1905 को"], ans: 0 },
+                { q: "22. सुभद्रा कुमारी चौहान के पिता का नाम क्या था ?", opt: ["ठाकुर राजनाथ सिंह", "ठाकुर हरिनाथ सिंह", "ठाकुर रामनाथ सिंह", "ठाकुर जगमोहन सिंह"], ans: 2 },
+                { q: "23. सुभद्रा कुमारी चौहान की लिखी कविता कौन-सी है ?", opt: ["प्यारे नन्हे बेटे को", "पुत्र वियोग", "हार-जीत", "गाँव का घर"], ans: 1 },
+                { q: "24. 'पुत्र वियोग' शीर्षक कविता किस काव्य-संग्रह से ली गई है ?", opt: ["'चित्राधार' से", "'लहर' से", "'मुकुल' से", "'दीपशिखा' से"], ans: 2 },
+                { q: "25. 'कुली प्रथा' किसकी कृति है ?", opt: ["ठाकुर लक्ष्मण सिंह की", "मुल्कराज आनंद की", "प्रेमचंद की", "ममता कालिया की"], ans: 0 },
+                { q: "26. 'पुत्र वियोग' किसकी रचना है ?", opt: ["सुभद्रा कुमारी चौहान", "रघुवीर सहाय", "अज्ञेय", "मुक्तिबोध"], ans: 0 }
+            ];
+            // Render Questions
+            questions.forEach((item, index) => {
+                if(index === 10) document.write('<div class="section-title">SECTION 02. </div>');
+                if(index === 20) document.write('<div class="section-title">SECTION 03. </div>');
+                if(index === 30) document.write('<div class="section-title">SECTION 04. </div>');
+                if(index === 40) document.write('<div class="section-title">SECTION 05. </div>');
+
+                let optionsHTML = '';
+                item.opt.forEach((option, i) => {
+                    optionsHTML += `
+                        <label class="option-label" id="label-q${index}-opt${i}">
+                            <input type="radio" name="q${index}" value="${i}">
+                            ${String.fromCharCode(97 + i)}) ${option}
+                        </label>`;
+                });
+
+                document.write(`
+                    <div class="question-block" id="qBlock${index}">
+                        <div class="question-text">${item.q}</div>
+                        <div class="options">${optionsHTML}</div>
+                    </div>
+                `);
+            });
+        </script>
+
+        <button type="button" class="submit-btn" onclick="calculateScore()">Submit Test & Check Result</button>
+    </form>
+
+    <div id="result-box"></div>
+
+</div>
+
+<script>
+    function calculateScore() {
+        let score = 0;
+        let total = questions.length;
+
+        questions.forEach((item, index) => {
+            // Get selected option
+            let selected = document.querySelector(`input[name="q${index}"]:checked`);
+            let correctValue = item.ans;
+            
+            // Highlight correct answer permanently
+            let correctLabel = document.getElementById(`label-q${index}-opt${correctValue}`);
+            correctLabel.classList.add("correct-answer");
+
+            if (selected) {
+                let selectedValue = parseInt(selected.value);
+                if (selectedValue === correctValue) {
+                    score++;
+                } else {
+                    // Highlight wrong answer if user selected it
+                    let wrongLabel = document.getElementById(`label-q${index}-opt${selectedValue}`);
+                    wrongLabel.classList.add("wrong-answer");
+                }
+            }
+        });
+
+        // Show Score
+        let resultBox = document.getElementById('result-box');
+        resultBox.style.display = "block";
+        
+        let percentage = (score / total) * 100;
+        let message = "";
+        
+        if(percentage >= 80) message = "उत्कृष्ट प्रदर्शन! 🌟";
+        else if(percentage >= 50) message = "अच्छा प्रयास, थोड़ी और मेहनत करें! 👍";
+        else message = "आपको और अभ्यास की आवश्यकता है! 📚";
+
+        resultBox.innerHTML = `आपका स्कोर: ${score} / ${total} <br><span style="font-size:18px; color:#333;">${message}</span>`;
+        
+        // Scroll to result
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>
